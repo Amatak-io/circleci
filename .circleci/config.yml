@@ -1,7 +1,12 @@
 # ~/.circleci/config.yml
 version: 2.1
+workflows:
+  testing:
+    jobs:
+      - runner-test
 jobs:
-  test:
-    docker:
-      - image: cimg/base:2022.11
-    parallelism: 4
+  runner-test:
+    machine: true
+    resource_class: amatak/host
+    steps:
+      - run: echo "Hi I'm on Runners!"
